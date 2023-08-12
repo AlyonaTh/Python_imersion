@@ -7,8 +7,11 @@
 def fun(**kwargs) -> dict:
     res = dict()
     for key, value in kwargs.items():
-        res[value] = key
+        if not value.__hash__:
+            res[str(value)]=key
+        else:
+            res[value] = key
     return res
 
 
-print(fun(rew=4, trj=5, vois=45, фыгя='wvahf',))
+print(fun(rew=4, trj=5, vois=[1,4,5], фыгя='wvahf',))
